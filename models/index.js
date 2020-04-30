@@ -21,6 +21,14 @@ const Page = db.define("page", {
   },
 });
 
+function generateSlug(title) {
+  return title.replace(/\s+/g, "_").replace(/\W/g, "");
+}
+
+Page.beforeValidate((instance) => {
+  instance.slug = generateSlug(instance.title);
+});
+
 const User = db.define("user", {
   name: {
     type: Sequelize.STRING,
@@ -32,6 +40,7 @@ const User = db.define("user", {
     validate: { isEmail: true },
   },
 });
+
 module.exports = {
   db,
   Page,
