@@ -1,8 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
-const layout = require("./views/layout");
-const main = require("./views/main");
 const { db, Page, User } = require("./models");
 const wikiRoutes = require("./routes/wiki.js");
 const userRoutes = require("./routes/user.js");
